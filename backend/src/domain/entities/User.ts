@@ -1,3 +1,4 @@
+import type { Role } from "../types/UserTypes";
 import { Address } from "./Address";
 import { Enterprise } from "./Enterprise";
 import { Sector } from "./Sector";
@@ -11,6 +12,7 @@ export class User {
   public _cpf: string;
   public _address: Address;
   public _enterpriseId: string;
+  public _role: Role;
   public _sectorId?: Sector;
   private _password: string;
 
@@ -23,6 +25,7 @@ export class User {
     cpf: string,
     enterpriseId: string,
     address: Address,
+    role: Role,
     sectorId?: Sector,
   ) {
     this._name = name;
@@ -34,6 +37,7 @@ export class User {
     this._sectorId = sectorId;
     this._enterpriseId = enterpriseId;
     this._address = address;
+    this._role = role;
   }
 
   get name() {
@@ -56,6 +60,10 @@ export class User {
   }
   get sectorId() {
     return this._sectorId;
+  }
+
+  get role() {
+    return this._role;
   }
 
   async comparePassword(password: string) {
