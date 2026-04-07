@@ -1,14 +1,24 @@
 import { Position } from "./Position";
 
 export class Sector {
+  public _id: string;
   public _name: string;
   public _position?: Position[];
   public _description?: string;
 
-  constructor(name: string, position?: Position[], description?: string) {
-    ((this._name = name),
+  constructor(
+    id: string,
+    name: string,
+    position?: Position[],
+    description?: string,
+  ) {
+    ((this._id = id),
+      (this._name = name),
       (this._description = description),
       (this._position = position));
+  }
+  get id() {
+    return this._id;
   }
 
   get name() {

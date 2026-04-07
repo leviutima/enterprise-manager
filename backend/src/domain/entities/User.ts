@@ -5,29 +5,33 @@ import { Sector } from "./Sector";
 import bcrypt from "bcrypt";
 
 export class User {
+  public _id: string;
   public _name: string;
   public _surname: string;
   public _email: string;
   public _birthDate: Date;
   public _cpf: string;
   public _address: Address;
-  public _enterpriseId: string;
+  public _enterpriseId?: string;
   public _role: Role;
   public _sectorId?: Sector;
   private _password: string;
 
   constructor(
+    id: string,
     name: string,
     surname: string,
     email: string,
     password: string,
     birthDate: Date,
     cpf: string,
-    enterpriseId: string,
+
     address: Address,
     role: Role,
     sectorId?: Sector,
+    enterpriseId?: string,
   ) {
+    this._id = id;
     this._name = name;
     this._surname = surname;
     this._email = email;
@@ -39,9 +43,15 @@ export class User {
     this._address = address;
     this._role = role;
   }
+  get id() {
+    return this._id;
+  }
 
   get name() {
     return this._name;
+  }
+  get surname() {
+    return this._surname;
   }
   get email() {
     return this._email;
@@ -64,6 +74,10 @@ export class User {
 
   get role() {
     return this._role;
+  }
+
+  get password() {
+    return this._password;
   }
 
   async comparePassword(password: string) {
