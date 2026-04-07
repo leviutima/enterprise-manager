@@ -1,4 +1,5 @@
 export class Address {
+  public _id: string;
   public _zipcode: string;
   public _street: string;
   public _city: string;
@@ -8,6 +9,7 @@ export class Address {
   public _neighborhood?: string;
 
   constructor(
+    id: string,
     zipCode: string,
     street: string,
     city: string,
@@ -16,6 +18,7 @@ export class Address {
     complement?: string,
     neighborhood?: string,
   ) {
+    this._id = id
     this._zipcode = zipCode;
     this._street = street;
     this._city = city;
@@ -23,6 +26,10 @@ export class Address {
     this._number = number;
     this._complement = complement;
     this._neighborhood = neighborhood;
+  }
+
+  get id() {
+    return this._id
   }
 
   get zipCode() {

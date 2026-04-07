@@ -3,6 +3,7 @@ import { Sector } from "./Sector";
 import { User } from "./User";
 
 export class Enterprise {
+  public _id: string;
   public _tradeName: string;
   public _corporateName: string;
   public _cnpj: string;
@@ -11,6 +12,7 @@ export class Enterprise {
   public _address?: Address;
 
   constructor(
+    id: string,
     tradeName: string,
     corporateName: string,
     cnpj: string,
@@ -18,12 +20,17 @@ export class Enterprise {
     employees?: User[] | null,
     address?: Address,
   ) {
+    this._id = id;
     this._tradeName = tradeName;
     this._corporateName = corporateName;
     this._cnpj = cnpj;
     this._sector = sector;
     this._employees = employees ?? [];
     this._address = address;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get tradeName() {

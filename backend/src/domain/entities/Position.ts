@@ -1,11 +1,15 @@
 import { User } from "./User";
 
 export class Position {
+  public _id: string;
   public _name: string;
-  public _employeesId: User[]; //array de id de funcionários
+  public _employeesId: User[];
 
-  constructor(name: string, employeesId: User[]) {
-    ((this._name = name), (this._employeesId = employeesId));
+  constructor(id: string, name: string, employeesId: User[]) {
+    ((this._id = id), (this._name = name), (this._employeesId = employeesId));
+  }
+  get id() {
+    return this._id;
   }
 
   get name() {
