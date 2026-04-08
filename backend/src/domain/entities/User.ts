@@ -14,7 +14,7 @@ export class User {
   public _address: Address;
   public _enterpriseId?: string;
   public _role: Role;
-  public _sectorId?: Sector;
+  public _sectorId?: string;
   private _password: string;
 
   constructor(
@@ -28,7 +28,7 @@ export class User {
 
     address: Address,
     role: Role,
-    sectorId?: Sector,
+    sectorId?: string,
     enterpriseId?: string,
   ) {
     this._id = id;

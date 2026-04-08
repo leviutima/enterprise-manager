@@ -4,6 +4,7 @@ import { UserMapper } from "../../mapper/userMapper/userMapper";
 import { IUserRepository } from "./IUserRepository";
 
 export class UserRepository implements IUserRepository {
+    
   async findAll(): Promise<User[]> {
     const { rows } = await pool.query("SELECT * FROM  users");
     return rows.map((row) => UserMapper.toDomain(row));
