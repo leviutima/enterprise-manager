@@ -1,15 +1,15 @@
 import { Address } from "../../../domain/entities/Address";
 import { Role } from "../../../domain/types/UserTypes";
 
-export interface UserOutputDTO {
-  id: string;
+export interface UpdateUserDto {
   name: string;
   surname: string;
   email: string;
-  brithDate: Date;
+  password: string;
+  birthDate: Date;
   cpf: string;
   address: Address,
-  enterpriseId?: string,
+  enterpriseId: string,
   role: Role,
-  sectorId?: string,
+  sectorId: string,
 }

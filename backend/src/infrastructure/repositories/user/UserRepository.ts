@@ -45,22 +45,22 @@ export class UserRepository implements IUserRepository {
     );
   }
 
-  async update(user: User): Promise<void> {
+  async update(id: string, data: Partial<User>): Promise<void> {
     await pool.query(
       `UPDATE users 
      SET name = $1, surname = $2, email = $3, birth_date = $4, 
          cpf = $5, enterprise_id = $6, role = $7, sector_id = $8
      WHERE id = $9`,
       [
-        user.name,
-        user.surname,
-        user.email,
-        user.birthDate,
-        user.cpf,
-        user.enterpriseId,
-        user.role,
-        user.sectorId,
-        user.id,
+        data.name,
+        data.surname,
+        data.email,
+        data.birthDate,
+        data.cpf,
+        data.enterpriseId,
+        data.role,
+        data.sectorId,
+        id
       ],
     );
   }
