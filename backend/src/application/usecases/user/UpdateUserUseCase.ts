@@ -5,7 +5,7 @@ import { UpdateUserDto } from "../../dtos/user/UpdateUserDTO";
 export class UpdateUserUseCase {
   constructor(private userRepo: UserRepository) {}
 
-  async execute(id: string, data: UpdateUserUseCase): Promise<void> {
+  async execute(id: string, data: UpdateUserDto): Promise<void> {
     const user = await this.userRepo.findById(id);
 
     if (!user) throw new Error("Usuário nao encontrado");
