@@ -8,6 +8,8 @@ const migrations = [
   "create_enterprise_table.sql",
   "create_sector_table.sql",
   "create_users_table.sql",
+  "update_user_status.sql",
+  "update_address_column_neighborhood.sql"
 ];
 
 async function migrate() {

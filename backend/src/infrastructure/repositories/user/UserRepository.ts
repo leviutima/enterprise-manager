@@ -4,7 +4,6 @@ import { UserMapper } from "../../mapper/userMapper/userMapper";
 import { IUserRepository } from "./IUserRepository";
 
 export class UserRepository implements IUserRepository {
-    
   async findAll(): Promise<User[]> {
     const { rows } = await pool.query("SELECT * FROM  users");
     return rows.map((row) => UserMapper.toDomain(row));
@@ -28,21 +27,25 @@ export class UserRepository implements IUserRepository {
 
   async create(user: User): Promise<void> {
     await pool.query(
-      `INSERT INTO users 
-      (name, surname, email, password, birth_date, cpf, enterprise_id, role, sector_id) 
-       VALUES ($1, $2, $3, $4, $5, $6,$7,$8,$9)`,
-      [
-        user.name,
-        user.surname,
-        user.email,
-        user.password,
-        user.birthDate,
-        user.cpf,
-        user.enterpriseId,
-        user.role,
-        user.sectorId,
-      ],
-    );
+    `INSERT INTO users 
+    (id, name, surname, email, password, birth_date, cpf, role, active, deleted_at, sector_id, enterprise_id, addresses_id) 
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+    [
+      user.id,         
+      user.name,        
+      user.surname,      
+      user.email,       
+      user.password,    
+      user.birthDate,   
+      user.cpf,        
+      user.role,         
+      user.active,       
+      user.deletedAt,    
+      user.sectorId,   
+      user.enterpriseId,
+      user.address.id,  
+    ],
+  );
   }
 
   async update(id: string, data: Partial<User>): Promise<void> {
@@ -60,7 +63,7 @@ export class UserRepository implements IUserRepository {
         data.enterpriseId,
         data.role,
         data.sectorId,
-        id
+        id,
       ],
     );
   }

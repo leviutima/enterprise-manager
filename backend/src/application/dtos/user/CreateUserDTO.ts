@@ -12,4 +12,6 @@ export interface CreateUserDto {
   enterpriseId: string,
   role: Role,
   sectorId: string,
+  active: boolean,
+  deletedAt: Date
 }

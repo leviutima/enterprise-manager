@@ -10,7 +10,7 @@ export class Address {
 
   constructor(
     id: string,
-    zipCode: string,
+    zipcode: string,
     street: string,
     city: string,
     state: string,
@@ -19,7 +19,7 @@ export class Address {
     neighborhood?: string,
   ) {
     this._id = id
-    this._zipcode = zipCode;
+    this._zipcode = zipcode;
     this._street = street;
     this._city = city;
     this._state = state;
@@ -32,7 +32,7 @@ export class Address {
     return this._id
   }
 
-  get zipCode() {
+  get zipcode() {
     return this._zipcode;
   }
   get street() {

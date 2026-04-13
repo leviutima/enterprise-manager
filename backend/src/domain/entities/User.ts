@@ -16,6 +16,8 @@ export class User {
   public _role: Role;
   public _sectorId?: string;
   private _password: string;
+  private _active: boolean;
+  private _deletedAt: Date;
 
   constructor(
     id: string,
@@ -25,9 +27,10 @@ export class User {
     password: string,
     birthDate: Date,
     cpf: string,
-
     address: Address,
     role: Role,
+    active: boolean,
+    deletedAt: Date,
     sectorId?: string,
     enterpriseId?: string,
   ) {
@@ -42,6 +45,8 @@ export class User {
     this._enterpriseId = enterpriseId;
     this._address = address;
     this._role = role;
+    this._active = active;
+    this._deletedAt = deletedAt;
   }
   get id() {
     return this._id;
@@ -78,6 +83,14 @@ export class User {
 
   get password() {
     return this._password;
+  }
+
+  get active() {
+    return this._active;
+  }
+
+  get deletedAt() {
+    return this._deletedAt;
   }
 
   async comparePassword(password: string) {
