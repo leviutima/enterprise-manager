@@ -8,10 +8,11 @@ export interface CreateUserDto {
   password: string;
   birthDate: Date;
   cpf: string;
-  address: Address,
-  enterpriseId: string,
-  role: Role,
-  sectorId: string,
-  active: boolean,
-  deletedAt: Date
+  address: Address;
+  enterpriseId: string;
+  role: Role;
+  sectorId: string;
+  active: boolean;
+  deletedAt: Date;
+  phone: string;
 }

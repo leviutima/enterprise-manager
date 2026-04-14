@@ -39,6 +39,7 @@ export const swaggerDocument = {
                   },
                   sectorId:     { type: "string", example: "uuid-do-setor" },
                   enterpriseId: { type: "string", example: "uuid-da-empresa" },
+                  phone: {type: "string", example: "11992902332"},
                   address: {
                     type: "object",
                     required: ["zipcode", "street", "city", "state"],

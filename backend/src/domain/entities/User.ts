@@ -11,6 +11,7 @@ export class User {
   public _email: string;
   public _birthDate: Date;
   public _cpf: string;
+  public _phone: string;
   public _address: Address;
   public _enterpriseId?: string;
   public _role: Role;
@@ -27,6 +28,7 @@ export class User {
     password: string,
     birthDate: Date,
     cpf: string,
+    phone: string,
     address: Address,
     role: Role,
     active: boolean,
@@ -43,6 +45,7 @@ export class User {
     this._cpf = cpf;
     this._sectorId = sectorId;
     this._enterpriseId = enterpriseId;
+    this._phone = phone
     this._address = address;
     this._role = role;
     this._active = active;
@@ -66,6 +69,9 @@ export class User {
   }
   get cpf() {
     return this._cpf;
+  }
+  get phone() {
+    return this._phone
   }
   get address() {
     return this._address;

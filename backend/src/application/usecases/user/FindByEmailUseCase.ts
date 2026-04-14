@@ -16,6 +16,7 @@ export class FindByEmailUseCase {
       brithDate: user.birthDate,
       email: user.email,
       cpf: user.cpf,
+      phone: user.phone,
       enterpriseId: user.enterpriseId || undefined,
       sectorId: user.sectorId || undefined,
       role: user.role,

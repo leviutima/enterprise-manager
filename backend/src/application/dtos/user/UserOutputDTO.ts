@@ -8,8 +8,9 @@ export interface UserOutputDTO {
   email: string;
   brithDate: Date;
   cpf: string;
-  address: Address,
-  enterpriseId?: string,
-  role: Role,
-  sectorId?: string,
+  address: Address;
+  enterpriseId?: string;
+  role: Role;
+  sectorId?: string;
+  phone: string;
 }

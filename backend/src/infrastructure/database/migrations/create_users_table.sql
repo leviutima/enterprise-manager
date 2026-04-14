@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS users (
     sector_id     UUID,
     addresses_id  UUID,
 
-    FOREIGN KEY (addresses_id)  REFERENCES addresses(id),
     FOREIGN KEY (enterprise_id) REFERENCES enterprises(id),
     FOREIGN KEY (sector_id)     REFERENCES sectors(id),
 

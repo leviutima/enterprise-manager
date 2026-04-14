@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS addresses (
     state           VARCHAR(110) NOT NULL,
     number          INTEGER,
     complement      VARCHAR(110),
-    neightborhood   VARCHAR(110)
+    neighborhood    VARCHAR(110)
 );

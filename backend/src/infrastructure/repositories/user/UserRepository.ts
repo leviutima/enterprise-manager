@@ -27,25 +27,26 @@ export class UserRepository implements IUserRepository {
 
   async create(user: User): Promise<void> {
     await pool.query(
-    `INSERT INTO users 
-    (id, name, surname, email, password, birth_date, cpf, role, active, deleted_at, sector_id, enterprise_id, addresses_id) 
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
-    [
-      user.id,         
-      user.name,        
-      user.surname,      
-      user.email,       
-      user.password,    
-      user.birthDate,   
-      user.cpf,        
-      user.role,         
-      user.active,       
-      user.deletedAt,    
-      user.sectorId,   
-      user.enterpriseId,
-      user.address.id,  
-    ],
-  );
+      `INSERT INTO users 
+    (id, name, surname, email, password, birth_date, cpf, role, active, deleted_at, sector_id, enterprise_id, addresses_id, phone) 
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`,
+      [
+        user.id,
+        user.name,
+        user.surname,
+        user.email,
+        user.password,
+        user.birthDate,
+        user.cpf,
+        user.role,
+        user.active,
+        user.deletedAt,
+        user.sectorId,
+        user.enterpriseId,
+        user.address.id,
+        user.phone,
+      ],
+    );
   }
 
   async update(id: string, data: Partial<User>): Promise<void> {

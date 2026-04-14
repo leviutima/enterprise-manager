@@ -3,9 +3,7 @@ CREATE TABLE IF NOT EXISTS enterprises (
     trade_name      VARCHAR(110) NOT NULL,
     corporate_name  VARCHAR(110) NOT NULL,
     cnpj            VARCHAR(14) NOT NULL,
-    
-    address_id UUID,
-    FOREIGN KEY (address_id) REFERENCES addresses(id), 
-    created_at TIMESTAMP DEFAULT NOW(),
-    update_at TIMESTAMP DEFAULT NOW()
+    address_id      UUID, 
+    created_at      TIMESTAMP DEFAULT NOW(),
+    update_at       TIMESTAMP DEFAULT NOW()
 );

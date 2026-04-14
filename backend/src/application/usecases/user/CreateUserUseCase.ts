@@ -28,7 +28,7 @@ export class CreateUserUseCase {
       input.address.neighborhood,
     );
 
-    await this.addressRepo.createAddress(address)
+    await this.addressRepo.createAddress(address);
 
     const user = new User(
       crypto.randomUUID(),
@@ -38,6 +38,7 @@ export class CreateUserUseCase {
       hashPassword,
       input.birthDate,
       input.cpf,
+      input.phone,
       address,
       input.role,
       input.active,

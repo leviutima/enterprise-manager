@@ -18,7 +18,7 @@ export class Address {
     complement?: string,
     neighborhood?: string,
   ) {
-    this._id = id
+    this._id = id;
     this._zipcode = zipcode;
     this._street = street;
     this._city = city;
@@ -29,7 +29,7 @@ export class Address {
   }
 
   get id() {
-    return this._id
+    return this._id;
   }
 
   get zipcode() {

@@ -14,6 +14,7 @@ export class UserMapper {
       row.address,
       row.role,
       row.sector_id,
+      row.phone
     );
   }
 
@@ -27,6 +28,7 @@ export class UserMapper {
       enterprise_id: user.enterpriseId,
       role: user.role,
       sector_id: user.sectorId,
+      phone: user._phone
     };
   }
 }

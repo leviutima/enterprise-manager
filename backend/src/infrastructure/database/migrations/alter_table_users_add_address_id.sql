@@ -1,0 +1,2 @@
+ALTER TABLE users 
+ADD COLUMN IF NOT EXISTS addresses_id UUID REFERENCES addresses(id);

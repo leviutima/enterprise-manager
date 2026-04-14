@@ -12,4 +12,5 @@ export interface UpdateUserDto {
   enterpriseId: string,
   role: Role,
   sectorId: string,
+  phone: string
 }

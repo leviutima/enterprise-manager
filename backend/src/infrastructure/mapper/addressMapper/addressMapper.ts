@@ -10,7 +10,7 @@ export class AddressMapper {
             row.state,
             row.number,
             row.complement,
-            row.neighborhood
+            row.neighborhood,
         )
     }
 }
