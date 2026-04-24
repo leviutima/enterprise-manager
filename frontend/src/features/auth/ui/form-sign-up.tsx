@@ -2,6 +2,8 @@
 
 import { useSignUpForm } from "../hooks/use-sign-up-form";
 import { signUp } from "../api/sign-up";
+import { useEffect, useState } from "react";
+import { viaCep } from "@/src/shared/lib/viaCep";
 
 const input =
   "w-full px-3.5 py-2.5 text-sm bg-bg border border-ink/10 rounded-xl text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/50 transition";
@@ -14,8 +16,25 @@ export function FormSignUp() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setValue,
   } = useSignUpForm();
   const { onSubmit, isPending, isError, isSuccess } = signUp();
+  const zipCode = watch("address.zipCode");
+
+  useEffect(() => {
+    const clean = zipCode?.replace(/\D/g, "");
+    if (clean?.length === 8) {
+      viaCep(clean).then((data) => {
+        if (data && !data.err) {
+          setValue("address.city", data.localidade);
+          setValue("address.state", data.uf);
+          setValue("address.street", data.logradouro);
+          setValue("address.neighborhood", data.bairro);
+        }
+      });
+    }
+  }, [zipCode]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -96,7 +115,6 @@ export function FormSignUp() {
               {...register("address.zipCode")}
               placeholder="00000-000"
               className={input}
-              
             />
             {errors.address?.zipCode && (
               <p className={error}>{errors.address.zipCode.message}</p>
