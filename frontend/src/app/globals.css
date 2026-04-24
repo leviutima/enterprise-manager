@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Cores customizadas */
+  --color-bg:           #F7F5F0;
+  --color-bg2:          #EEEAE1;
+  --color-ink:          #1C1B18;
+  --color-muted:        #7A7770;
+  --color-accent:       #3D6B4F;
+  --color-accent-light: #D4E8DB;
+  --color-warm:         #C4773B;
+  --color-warm-light:   #F5E6D8;
+
+  /* Fontes */
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans:  var(--font-jakarta), sans-serif;
+}
+
+/* Remove o dark mode automático que tava quebrando tudo */
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
