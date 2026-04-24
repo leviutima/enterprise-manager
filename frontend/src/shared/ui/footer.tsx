@@ -1,3 +1,5 @@
+"use client";
+
 import { Logo } from "./logo";
 import { motion, useInView } from "motion/react"
 

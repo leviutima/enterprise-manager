@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useInView } from "motion/react"
 import { fadeIn } from "./animations/animations"
 import { Logo } from "./logo"

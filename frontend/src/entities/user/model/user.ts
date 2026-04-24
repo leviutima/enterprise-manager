@@ -11,7 +11,7 @@ export interface User {
   address: Address;
   enterpriseId?: string;
   role: Role;
-  sectorId: string;
+  sectorId?: string;
   active: boolean;
   deletedAt: Date;
 }
