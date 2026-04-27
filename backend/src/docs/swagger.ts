@@ -141,6 +141,42 @@ export const swaggerDocument = {
       },
     },
 
+    "/enterprise-prod-instance/api/auth/login": {
+      post: {
+        summary: "Realiza login do usuário",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["email", "password"],
+                properties: {
+                  email:    { type: "string", example: "levi.utima@gmail.com" },
+                  password: { type: "string", example: "senha123" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          200: { description: "Login realizado com sucesso — cookie 'token' setado" },
+          401: { description: "Credenciais inválidas" },
+        },
+      },
+    },
+
+    "/enterprise-prod-instance/api/auth/logout": {
+      post: {
+        summary: "Realiza logout do usuário",
+        tags: ["Auth"],
+        responses: {
+          200: { description: "Logout realizado com sucesso — cookie 'token' removido" },
+        },
+      },
+    },
+
     "/enterprise-prod-instance/api/users/{id}/password": {
       patch: {
         summary: "Atualiza a senha do usuário",

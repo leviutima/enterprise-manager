@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { UserRepository } from "../../infrastructure/repositories/user/UserRepository";
-import { UserController } from "../controllers/user/UserController";
-import { FindAllUsersUseCase } from "../../application/usecases/user/FindAllUsersUseCase";
-import { CreateUserUseCase } from "../../application/usecases/user/CreateUserUseCase";
-import { FindByEmailUseCase } from "../../application/usecases/user/FindByEmailUseCase";
-import { UpdateUserUseCase } from "../../application/usecases/user/UpdateUserUseCase";
-import { UpdatePasswordUseCase } from "../../application/usecases/user/UpdatePasswordUseCase";
-import { DeleteUserUseCase } from "../../application/usecases/user/DeleteUserUseCase";
-import { AddressRepository } from "../../infrastructure/repositories/adress/AddressRepository";
+import { UserRepository } from "../../../infrastructure/repositories/user/UserRepository";
+import { UserController } from "../../controllers/user/UserController";
+import { FindAllUsersUseCase } from "../../../application/usecases/user/FindAllUsersUseCase";
+import { CreateUserUseCase } from "../../../application/usecases/user/CreateUserUseCase";
+import { FindByEmailUseCase } from "../../../application/usecases/user/FindByEmailUseCase";
+import { UpdateUserUseCase } from "../../../application/usecases/user/UpdateUserUseCase";
+import { UpdatePasswordUseCase } from "../../../application/usecases/user/UpdatePasswordUseCase";
+import { DeleteUserUseCase } from "../../../application/usecases/user/DeleteUserUseCase";
+import { AddressRepository } from "../../../infrastructure/repositories/adress/AddressRepository";
 
 const router = Router();
 

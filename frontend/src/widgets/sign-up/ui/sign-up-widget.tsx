@@ -1,6 +1,5 @@
 import { FormSignUp } from "@/src/features/auth";
 
-
 export default function SignUpWidget() {
   return (
     <section className="flex-1 pt-28 pb-20 px-6">
