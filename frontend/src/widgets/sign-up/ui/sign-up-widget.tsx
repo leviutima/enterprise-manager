@@ -1,4 +1,5 @@
-import { FormSignUp } from "@/src/features/auth/ui/form-sign-up";
+import { FormSignUp } from "@/src/features/auth";
+
 
 export default function SignUpWidget() {
   return (

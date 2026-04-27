@@ -13,5 +13,5 @@ export interface User {
   role: Role;
   sectorId?: string;
   active: boolean;
-  deletedAt: Date;
+  // deletedAt: Date;
 }

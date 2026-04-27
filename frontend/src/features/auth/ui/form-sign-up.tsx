@@ -2,8 +2,8 @@
 
 import { useSignUpForm } from "../hooks/use-sign-up-form";
 import { signUp } from "../api/sign-up";
-import { useEffect, useState } from "react";
-import { viaCep } from "@/src/shared/lib/viaCep";
+import { useEffect } from "react";
+import { viaCep } from "@/src/shared/lib/api/viaCep";
 
 const input =
   "w-full px-3.5 py-2.5 text-sm bg-bg border border-ink/10 rounded-xl text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent/50 transition";
@@ -103,6 +103,33 @@ export function FormSignUp() {
             <p className={error}>{errors.birthDate.message}</p>
           )}
         </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className={label}>Senha</label>
+            <input
+              {...register("password")}
+              type="password"
+              placeholder="Mínimo 8 caracteres"
+              className={input}
+            />
+            {errors.password && (
+              <p className={error}>{errors.password.message}</p>
+            )}
+          </div>
+          <div>
+            <label className={label}>Confirmar senha</label>
+            <input
+              {...register("confirmPassword")}
+              type="password"
+              placeholder="Repita a senha"
+              className={input}
+            />
+            {errors.confirmPassword && (
+              <p className={error}>{errors.confirmPassword.message}</p>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="space-y-4">
@@ -198,7 +225,7 @@ export function FormSignUp() {
       <button
         type="submit"
         disabled={isPending}
-        className="w-full py-3 text-sm font-medium text-white bg-accent rounded-full hover:bg-[#2f5240] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full py-3 text-sm font-medium text-white bg-accent rounded-full hover:bg-[#2f5240] transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
       >
         {isPending ? "Criando conta..." : "Criar conta"}
       </button>

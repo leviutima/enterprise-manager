@@ -33,6 +33,7 @@ export class UserController {
       await this.createUser.execute(req.body);
       res.status(201).json({ message: "Usuário criado" });
     } catch (err: any) {
+      console.error("[UserController.create]", err);
       res.status(500).json({ err: err.message });
     }
   }
