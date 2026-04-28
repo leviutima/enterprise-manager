@@ -4,10 +4,8 @@ import SignUpWidget from "@/src/widgets/sign-up/ui/sign-up-widget";
 
 export default function SignUpPage() {
   return (
-    <main className="min-h-screen flex flex-col">
-      <Navbar />
+    <main className="">
         <SignUpWidget />
-      <Footer />
     </main>
   );
 }
