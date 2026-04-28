@@ -8,7 +8,6 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
     res.status(401).json({ message: "Não autenticado" });
     return;
   }
-
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET!);
     (req as any).user = payload;

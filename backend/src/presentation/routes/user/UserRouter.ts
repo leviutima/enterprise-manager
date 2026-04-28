@@ -24,7 +24,7 @@ const userController = new UserController(
 );
 
 router.get("/users", (req, res) => userController.getAll(req, res));
-router.post("/users", (req, res) => userController.create(req, res));
+// router.post("/users", (req, res) => userController.create(req, res));
 router.get("/users/:email", (req, res) => userController.findByEmail(req, res));
 router.put("/users/:id", (req, res) => userController.update(req, res));
 router.patch("/users/:id/password", (req, res) =>

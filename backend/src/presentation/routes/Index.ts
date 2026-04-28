@@ -5,7 +5,7 @@ import { userRouter } from "./user/UserRouter";
 
 const router = Router();
 
-router.use(authMiddleware, userRouter); 
-router.use(authRouter);               
+router.use(authRouter);
+router.use(authMiddleware, userRouter);
 
 export { router as apiRouter };

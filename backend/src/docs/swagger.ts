@@ -5,19 +5,60 @@ export const swaggerDocument = {
     version: "1.0.0",
     description: "Documentação da API",
   },
+  components: {
+    securitySchemes: {
+      cookieAuth: {
+        type: "apiKey",
+        in: "cookie",
+        name: "token",
+        description: "JWT armazenado em cookie httpOnly. Faça login em /auth/login para obter o token.",
+      },
+    },
+  },
   paths: {
-    "/enterprise-prod-instance/api/users": {
-      get: {
-        summary: "Lista todos os usuários",
-        tags: ["Users"],
+    "/enterprise-prod-instance/api/auth/login": {
+      post: {
+        summary: "Realiza login",
+        tags: ["Auth"],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["email", "password"],
+                properties: {
+                  email:    { type: "string", example: "levi.utima@gmail.com" },
+                  password: { type: "string", example: "senha123" },
+                },
+              },
+            },
+          },
+        },
         responses: {
-          200: { description: "Lista de usuários retornada com sucesso" },
+          200: {
+            description: "Login realizado com sucesso — cookie 'token' definido",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    message: { type: "string", example: "Login realizado com sucesso" },
+                  },
+                },
+              },
+            },
+          },
+          401: { description: "Credenciais inválidas" },
           500: { description: "Erro interno do servidor" },
         },
       },
+    },
+
+    "/enterprise-prod-instance/api/auth/sign-up": {
       post: {
         summary: "Cria um usuário",
-        tags: ["Users"],
+        tags: ["Auth"],
         requestBody: {
           required: true,
           content: {
@@ -37,9 +78,10 @@ export const swaggerDocument = {
                     enum: ["ADMIN", "USER", "MANAGER"],
                     example: "USER",
                   },
+                  phone:        { type: "string", example: "11992902332" },
                   sectorId:     { type: "string", example: "uuid-do-setor" },
                   enterpriseId: { type: "string", example: "uuid-da-empresa" },
-                  phone: {type: "string", example: "11992902332"},
+                  active:       { type: "boolean", example: true },
                   address: {
                     type: "object",
                     required: ["zipcode", "street", "city", "state"],
@@ -53,15 +95,60 @@ export const swaggerDocument = {
                       neighborhood: { type: "string", example: "Bela Vista" },
                     },
                   },
-                  active: {type: "boolean", format: [true, false], example: true}
                 },
               },
             },
           },
         },
         responses: {
-          201: { description: "Usuário criado com sucesso" },
-          400: { description: "Dados inválidos" },
+          201: {
+            description: "Usuário criado",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    message: { type: "string", example: "Usuário criado" },
+                  },
+                },
+              },
+            },
+          },
+          500: { description: "Erro interno do servidor" },
+        },
+      },
+    },
+
+    "/enterprise-prod-instance/api/auth/logout": {
+      post: {
+        summary: "Realiza logout",
+        tags: ["Auth"],
+        security: [{ cookieAuth: [] }],
+        responses: {
+          200: {
+            description: "Logout realizado — cookie 'token' removido",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    message: { type: "string", example: "Logout realizado" },
+                  },
+                },
+              },
+            },
+          },
+          500: { description: "Erro interno do servidor" },
+        },
+      },
+    },
+    "/enterprise-prod-instance/api/users": {
+      get: {
+        summary: "Lista todos os usuários",
+        tags: ["Users"],
+        security: [{ cookieAuth: [] }],
+        responses: {
+          200: { description: "Lista de usuários retornada com sucesso" },
           500: { description: "Erro interno do servidor" },
         },
       },
@@ -71,6 +158,7 @@ export const swaggerDocument = {
       get: {
         summary: "Busca usuário por email",
         tags: ["Users"],
+        security: [{ cookieAuth: [] }],
         parameters: [
           {
             name: "email",
@@ -92,6 +180,7 @@ export const swaggerDocument = {
       put: {
         summary: "Atualiza um usuário",
         tags: ["Users"],
+        security: [{ cookieAuth: [] }],
         parameters: [
           {
             name: "id",
@@ -124,6 +213,7 @@ export const swaggerDocument = {
       delete: {
         summary: "Deleta um usuário",
         tags: ["Users"],
+        security: [{ cookieAuth: [] }],
         parameters: [
           {
             name: "id",
@@ -141,46 +231,11 @@ export const swaggerDocument = {
       },
     },
 
-    "/enterprise-prod-instance/api/auth/login": {
-      post: {
-        summary: "Realiza login do usuário",
-        tags: ["Auth"],
-        requestBody: {
-          required: true,
-          content: {
-            "application/json": {
-              schema: {
-                type: "object",
-                required: ["email", "password"],
-                properties: {
-                  email:    { type: "string", example: "levi.utima@gmail.com" },
-                  password: { type: "string", example: "senha123" },
-                },
-              },
-            },
-          },
-        },
-        responses: {
-          200: { description: "Login realizado com sucesso — cookie 'token' setado" },
-          401: { description: "Credenciais inválidas" },
-        },
-      },
-    },
-
-    "/enterprise-prod-instance/api/auth/logout": {
-      post: {
-        summary: "Realiza logout do usuário",
-        tags: ["Auth"],
-        responses: {
-          200: { description: "Logout realizado com sucesso — cookie 'token' removido" },
-        },
-      },
-    },
-
     "/enterprise-prod-instance/api/users/{id}/password": {
       patch: {
         summary: "Atualiza a senha do usuário",
         tags: ["Users"],
+        security: [{ cookieAuth: [] }],
         parameters: [
           {
             name: "id",

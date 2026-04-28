@@ -28,15 +28,7 @@ export class UserController {
     }
   }
 
-  async create(req: Request, res: Response): Promise<void> {
-    try {
-      await this.createUser.execute(req.body);
-      res.status(201).json({ message: "Usuário criado" });
-    } catch (err: any) {
-      console.error("[UserController.create]", err);
-      res.status(500).json({ err: err.message });
-    }
-  }
+
 
   async findByEmail(req: Request, res: Response) {
     try {

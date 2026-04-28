@@ -15,7 +15,7 @@ const createUser = async (data: SignUpFormSchema) => {
             zipCode: undefined,
         },
     };
-    const res = await client.post("/users", payload);
+    const res = await client.post("/auth/sign-up", payload);
     return res.data;
 };
 
