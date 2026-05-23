@@ -1,24 +1,30 @@
 "use client";
 
 import { useSignUpForm } from "../hooks/use-sign-up-form";
-import { signUp } from "../api/sign-up";
-import { useEffect } from "react";
-import { viaCep } from "@/src/shared/lib/api/viaCep";
+import { PersonalDataSchema } from "../model/auth.schema";
+import { useAuthSignUp } from "../model/auth.context";
 import { error, input, label, sectionTitle } from "../utils/form-style";
+import { ButtonFreeStyle } from "@/src/shared/ui/button";
 
-export function FormSignUp() {
+interface FormSignUpProps {
+  onNext: () => void;
+}
+
+export function FormSignUp({ onNext }: FormSignUpProps) {
+  const { setPersonalData } = useAuthSignUp();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-    setValue,
   } = useSignUpForm();
-  const { onSubmit, isPending, isError, isSuccess } = signUp();
 
+  function handleNext(data: PersonalDataSchema) {
+    setPersonalData(data);
+    onNext();
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3.5">
+    <form onSubmit={handleSubmit(handleNext)} className="flex flex-col gap-3.5">
       <div className="flex flex-col gap-2">
         <p className={sectionTitle}>Informações pessoais</p>
 
@@ -112,24 +118,7 @@ export function FormSignUp() {
           </div>
         </div>
       </div>
-      <button
-        type="submit"
-        disabled={isPending}
-        className="w-full py-3 text-sm font-medium text-white bg-accent rounded-full hover:bg-[#2f5240] transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-      >
-        {isPending ? "Criando conta..." : "Criar conta"}
-      </button>
-
-      {isError && (
-        <p className="text-red-400 text-sm text-center">
-          Ocorreu um erro. Tente novamente.
-        </p>
-      )}
-      {isSuccess && (
-        <p className="text-accent text-sm text-center">
-          Conta criada com sucesso!
-        </p>
-      )}
+      <ButtonFreeStyle variant="primary" size="md">Próximo</ButtonFreeStyle>
     </form>
   );
 }

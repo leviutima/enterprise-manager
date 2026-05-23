@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "motion/react"
-import { fadeIn } from "./animations/animations"
-import { Logo } from "./logo"
+import { fadeIn } from "../animations/animations"
+import { Logo } from "../logo/logo"
 
 export function Navbar() {
   return (

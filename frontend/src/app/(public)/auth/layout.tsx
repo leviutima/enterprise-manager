@@ -4,7 +4,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start justify-center p-8">
+    <div className="flex items-center gap-8 justify-center p-8">
       <div className="hidden lg:flex flex-col gap-8 sticky">
         <div className="">
           <span className="inline-block px-3 py-1 text-xs font-medium text-accent bg-accent-light rounded-full border border-accent/20">

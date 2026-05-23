@@ -1,1 +1,3 @@
-export { FormSignUp } from "@/src/features/auth/ui/form-sign-up";
+export { FormSignUp } from "./ui/form-sign-up";
+export { useAuthSignUp } from "./model/auth.context"
+export { AuthSignUpProvider } from "./model/auth.context"

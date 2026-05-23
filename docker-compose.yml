@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: enterprise-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: levigamer20
+      POSTGRES_DB: enterprisedb
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

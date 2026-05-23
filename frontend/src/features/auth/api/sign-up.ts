@@ -3,19 +3,8 @@ import { client } from '@/src/shared/config/client';
 import { useMutation } from "@tanstack/react-query"
 
 const createUser = async (data: SignUpFormSchema) => {
-    const { confirmPassword, ...rest } = data;
-    const payload = {
-        ...rest,
-        sectorId: rest.sectorId || null,
-        enterpriseId: rest.enterpriseId || null,
-        address: {
-            ...rest.address,
-            zipcode: rest.address.zipCode,
-            number: parseInt(rest.address.number, 10),
-            zipCode: undefined,
-        },
-    };
-    const res = await client.post("/auth/sign-up", payload);
+
+    const res = await client.post("/auth/sign-up", data);
     return res.data;
 };
 

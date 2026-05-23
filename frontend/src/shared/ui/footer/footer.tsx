@@ -1,6 +1,6 @@
 "use client";
 
-import { Logo } from "./logo";
+import { Logo } from "../logo/logo";
 import { motion, useInView } from "motion/react"
 
 export function Footer() {
